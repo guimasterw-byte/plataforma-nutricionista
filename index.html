@@ -58,6 +58,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
         .logo-icon {
@@ -81,6 +82,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
 
         .user-avatar {
@@ -138,6 +140,7 @@
             color: var(--dark);
             transition: all 0.2s;
             font-weight: 500;
+            cursor: pointer;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -192,6 +195,7 @@
             box-shadow: var(--shadow);
             padding: 1.5rem;
             transition: transform 0.2s;
+            cursor: pointer;
         }
 
         .card:hover {
@@ -307,6 +311,11 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        .checklist-item:hover {
+            background-color: #f8f9fa;
         }
 
         .checklist-item:last-child {
@@ -324,6 +333,7 @@
             align-items: center;
             justify-content: center;
             margin-top: 2px;
+            transition: all 0.2s;
         }
 
         .item-status.checked {
@@ -364,6 +374,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: all 0.2s;
         }
 
         .btn-photo {
@@ -371,14 +382,29 @@
             border: 1px solid var(--primary);
         }
 
+        .btn-photo:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         .btn-note {
             color: var(--warning);
             border: 1px solid var(--warning);
         }
 
+        .btn-note:hover {
+            background: var(--warning);
+            color: white;
+        }
+
         .btn-nc {
             color: var(--danger);
             border: 1px solid var(--danger);
+        }
+
+        .btn-nc:hover {
+            background: var(--danger);
+            color: white;
         }
 
         .item-priority {
@@ -424,6 +450,7 @@
 
         .btn-primary:hover {
             background: var(--secondary);
+            transform: translateY(-2px);
         }
 
         .btn-outline {
@@ -434,6 +461,51 @@
 
         .btn-outline:hover {
             background: rgba(26, 147, 111, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
         }
 
         /* Responsive */
@@ -473,12 +545,12 @@
     <div class="app-container">
         <!-- Header -->
         <header class="app-header">
-            <div class="logo">
+            <div class="logo" onclick="showNotification('Dashboard carregado!')">
                 <i class="fas fa-clipboard-check logo-icon"></i>
                 <span class="logo-text">NutriInspeção</span>
             </div>
             <div class="header-actions">
-                <div class="user-info">
+                <div class="user-info" onclick="toggleUserMenu()">
                     <div class="user-avatar">NC</div>
                     <span>Nutricionista Carla</span>
                 </div>
@@ -491,19 +563,19 @@
                 <h3 class="nav-title">Principal</h3>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a class="nav-link active" onclick="switchTab('dashboard')">
                             <i class="fas fa-home"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('checklists')">
                             <i class="fas fa-clipboard-list"></i>
                             <span>Checklists</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('agenda')">
                             <i class="fas fa-calendar-alt"></i>
                             <span>Agenda</span>
                         </a>
@@ -515,19 +587,19 @@
                 <h3 class="nav-title">Inspeções</h3>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="startNewInspection()">
                             <i class="fas fa-play-circle"></i>
                             <span>Nova Inspeção</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('historico')">
                             <i class="fas fa-history"></i>
                             <span>Histórico</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('relatorios')">
                             <i class="fas fa-chart-bar"></i>
                             <span>Relatórios</span>
                         </a>
@@ -539,19 +611,19 @@
                 <h3 class="nav-title">Gestão</h3>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('estabelecimentos')">
                             <i class="fas fa-store"></i>
                             <span>Estabelecimentos</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('nao-conformidades')">
                             <i class="fas fa-tasks"></i>
                             <span>Não Conformidades</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" onclick="switchTab('configuracoes')">
                             <i class="fas fa-cog"></i>
                             <span>Configurações</span>
                         </a>
@@ -568,10 +640,10 @@
                     <p>Restaurante Sabor & Saúde • 15/10/2023</p>
                 </div>
                 <div class="page-actions">
-                    <button class="btn btn-outline">
+                    <button class="btn btn-outline" onclick="pauseInspection()">
                         <i class="fas fa-pause"></i> Pausar
                     </button>
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="finishInspection()">
                         <i class="fas fa-save"></i> Salvar e Finalizar
                     </button>
                 </div>
@@ -579,47 +651,47 @@
 
             <!-- Cards de Resumo -->
             <div class="cards-grid">
-                <div class="card">
+                <div class="card" onclick="showProgressDetails()">
                     <div class="card-header">
                         <h3 class="card-title">Progresso</h3>
                         <div class="card-icon icon-primary">
                             <i class="fas fa-chart-line"></i>
                         </div>
                     </div>
-                    <div class="card-value">65%</div>
-                    <p class="card-text">13 de 20 itens verificados</p>
+                    <div class="card-value" id="progressValue">65%</div>
+                    <p class="card-text" id="progressText">13 de 20 itens verificados</p>
                 </div>
 
-                <div class="card">
+                <div class="card" onclick="showConformityDetails()">
                     <div class="card-header">
                         <h3 class="card-title">Conformidade</h3>
                         <div class="card-icon icon-success">
                             <i class="fas fa-check-circle"></i>
                         </div>
                     </div>
-                    <div class="card-value">85%</div>
-                    <p class="card-text">11 itens conformes</p>
+                    <div class="card-value" id="conformityValue">85%</div>
+                    <p class="card-text" id="conformityText">11 itens conformes</p>
                 </div>
 
-                <div class="card">
+                <div class="card" onclick="showNCDetails()">
                     <div class="card-header">
                         <h3 class="card-title">Não Conformidades</h3>
                         <div class="card-icon icon-danger">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
                     </div>
-                    <div class="card-value">2</div>
+                    <div class="card-value" id="ncValue">2</div>
                     <p class="card-text">Itens críticos identificados</p>
                 </div>
 
-                <div class="card">
+                <div class="card" onclick="showEvidenceDetails()">
                     <div class="card-header">
                         <h3 class="card-title">Evidências</h3>
                         <div class="card-icon icon-warning">
                             <i class="fas fa-camera"></i>
                         </div>
                     </div>
-                    <div class="card-value">7</div>
+                    <div class="card-value" id="evidenceValue">7</div>
                     <p class="card-text">Fotos e anotações</p>
                 </div>
             </div>
@@ -629,171 +701,308 @@
                 <div class="checklist-header">
                     <h2 class="checklist-title">Checklist de Inspeção Sanitária</h2>
                     <div class="checklist-filters">
-                        <button class="filter-btn active">Todos</button>
-                        <button class="filter-btn">Pendentes</button>
-                        <button class="filter-btn">Concluídos</button>
-                        <button class="filter-btn">Críticos</button>
+                        <button class="filter-btn active" onclick="filterChecklist('all')">Todos</button>
+                        <button class="filter-btn" onclick="filterChecklist('pending')">Pendentes</button>
+                        <button class="filter-btn" onclick="filterChecklist('completed')">Concluídos</button>
+                        <button class="filter-btn" onclick="filterChecklist('critical')">Críticos</button>
                     </div>
                 </div>
 
-                <div class="checklist-items">
-                    <!-- Item 1 -->
-                    <div class="checklist-item">
-                        <div class="item-status checked">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Higiene dos Manipuladores</h3>
-                            <p class="item-description">Verificar uso de uniforme completo, unhas curtas e limpas, ausência de adornos.</p>
-                            <div class="item-actions">
-                                <button class="action-btn btn-photo">
-                                    <i class="fas fa-camera"></i> Foto
-                                </button>
-                                <button class="action-btn btn-note">
-                                    <i class="fas fa-sticky-note"></i> Anotação
-                                </button>
-                            </div>
-                        </div>
-                        <div class="item-priority priority-low">Baixa</div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="checklist-item">
-                        <div class="item-status checked">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Controle de Temperatura</h3>
-                            <p class="item-description">Freezers abaixo de -18°C e geladeiras abaixo de 5°C. Verificar termômetros calibrados.</p>
-                            <div class="item-actions">
-                                <button class="action-btn btn-photo">
-                                    <i class="fas fa-camera"></i> Foto
-                                </button>
-                                <button class="action-btn btn-note">
-                                    <i class="fas fa-sticky-note"></i> Anotação
-                                </button>
-                            </div>
-                        </div>
-                        <div class="item-priority priority-high">Alta</div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="checklist-item">
-                        <div class="item-status"></div>
-                        <div class="item-content">
-                            <h3 class="item-title">Armazenamento de Alimentos</h3>
-                            <p class="item-description">Produtos organizados por categoria, afastados do solo, com identificação de validade.</p>
-                            <div class="item-actions">
-                                <button class="action-btn btn-photo">
-                                    <i class="fas fa-camera"></i> Foto
-                                </button>
-                                <button class="action-btn btn-note">
-                                    <i class="fas fa-sticky-note"></i> Anotação
-                                </button>
-                                <button class="action-btn btn-nc">
-                                    <i class="fas fa-times-circle"></i> Não Conforme
-                                </button>
-                            </div>
-                        </div>
-                        <div class="item-priority priority-medium">Média</div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="checklist-item">
-                        <div class="item-status"></div>
-                        <div class="item-content">
-                            <h3 class="item-title">Limpeza de Equipamentos</h3>
-                            <p class="item-description">Superfícies, utensílios e equipamentos limpos e sanitizados adequadamente.</p>
-                            <div class="item-actions">
-                                <button class="action-btn btn-photo">
-                                    <i class="fas fa-camera"></i> Foto
-                                </button>
-                                <button class="action-btn btn-note">
-                                    <i class="fas fa-sticky-note"></i> Anotação
-                                </button>
-                            </div>
-                        </div>
-                        <div class="item-priority priority-medium">Média</div>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div class="checklist-item">
-                        <div class="item-status checked">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Controle de Pragas</h3>
-                            <p class="item-description">Ausência de sinais de pragas, ralos protegidos, vedação de aberturas.</p>
-                            <div class="item-actions">
-                                <button class="action-btn btn-photo">
-                                    <i class="fas fa-camera"></i> Foto
-                                </button>
-                                <button class="action-btn btn-note">
-                                    <i class="fas fa-sticky-note"></i> Anotação
-                                </button>
-                            </div>
-                        </div>
-                        <div class="item-priority priority-high">Alta</div>
-                    </div>
+                <div class="checklist-items" id="checklistItems">
+                    <!-- Itens serão carregados via JavaScript -->
                 </div>
             </div>
         </main>
     </div>
 
+    <!-- Modal para Notas -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Adicionar Anotação</h3>
+                <button class="close-modal" onclick="closeModal('noteModal')">&times;</button>
+            </div>
+            <textarea id="noteText" placeholder="Digite sua anotação aqui..." style="width: 100%; height: 150px; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; resize: vertical;"></textarea>
+            <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: flex-end;">
+                <button class="btn btn-outline" onclick="closeModal('noteModal')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveNote()">Salvar Anotação</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Alternar status dos itens do checklist
-            const statusItems = document.querySelectorAll('.item-status');
-            statusItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.toggle('checked');
-                    updateProgress();
-                });
-            });
-
-            // Atualizar progresso
-            function updateProgress() {
-                const totalItems = document.querySelectorAll('.checklist-item').length;
-                const checkedItems = document.querySelectorAll('.item-status.checked').length;
-                const progress = Math.round((checkedItems / totalItems) * 100);
-                
-                document.querySelector('.card-value').textContent = `${progress}%`;
-                document.querySelector('.card-text').textContent = `${checkedItems} de ${totalItems} itens verificados`;
-                
-                // Atualizar conformidade (simulação)
-                const conformity = 85 - (totalItems - checkedItems) * 2;
-                document.querySelectorAll('.card-value')[1].textContent = `${Math.max(conformity, 65)}%`;
+        // Dados do checklist
+        const checklistItems = [
+            {
+                id: 1,
+                title: "Higiene dos Manipuladores",
+                description: "Verificar uso de uniforme completo, unhas curtas e limpas, ausência de adornos.",
+                checked: true,
+                priority: "low",
+                hasNote: false,
+                hasPhoto: false,
+                hasNC: false
+            },
+            {
+                id: 2,
+                title: "Controle de Temperatura",
+                description: "Freezers abaixo de -18°C e geladeiras abaixo de 5°C. Verificar termômetros calibrados.",
+                checked: true,
+                priority: "high",
+                hasNote: false,
+                hasPhoto: false,
+                hasNC: false
+            },
+            {
+                id: 3,
+                title: "Armazenamento de Alimentos",
+                description: "Produtos organizados por categoria, afastados do solo, com identificação de validade.",
+                checked: false,
+                priority: "medium",
+                hasNote: false,
+                hasPhoto: false,
+                hasNC: false
+            },
+            {
+                id: 4,
+                title: "Limpeza de Equipamentos",
+                description: "Superfícies, utensílios e equipamentos limpos e sanitizados adequadamente.",
+                checked: false,
+                priority: "medium",
+                hasNote: false,
+                hasPhoto: false,
+                hasNC: false
+            },
+            {
+                id: 5,
+                title: "Controle de Pragas",
+                description: "Ausência de sinais de pragas, ralos protegidos, vedação de aberturas.",
+                checked: true,
+                priority: "high",
+                hasNote: false,
+                hasPhoto: false,
+                hasNC: false
             }
+        ];
 
-            // Filtros do checklist
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Em uma implementação real, aqui filtraria os itens
-                });
-            });
+        let currentFilter = 'all';
+        let currentNoteItemId = null;
 
-            // Botões de ação
-            const actionButtons = document.querySelectorAll('.action-btn');
-            actionButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const action = this.classList[1];
-                    
-                    if (action === 'btn-nc') {
-                        this.innerHTML = '<i class="fas fa-times-circle"></i> NC Registrada';
-                        this.style.backgroundColor = 'rgba(230, 57, 70, 0.1)';
-                        
-                        // Atualizar contador de NCs
-                        const ncCount = document.querySelectorAll('.card-value')[2];
-                        ncCount.textContent = parseInt(ncCount.textContent) + 1;
-                    }
-                });
-            });
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            renderChecklist();
+            updateProgress();
         });
+
+        // Renderizar checklist
+        function renderChecklist() {
+            const container = document.getElementById('checklistItems');
+            container.innerHTML = '';
+
+            const filteredItems = checklistItems.filter(item => {
+                if (currentFilter === 'pending') return !item.checked;
+                if (currentFilter === 'completed') return item.checked;
+                if (currentFilter === 'critical') return item.priority === 'high';
+                return true;
+            });
+
+            filteredItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'checklist-item';
+                itemElement.innerHTML = `
+                    <div class="item-status ${item.checked ? 'checked' : ''}" onclick="toggleChecklistItem(${item.id})">
+                        ${item.checked ? '<i class="fas fa-check"></i>' : ''}
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">${item.title}</h3>
+                        <p class="item-description">${item.description}</p>
+                        <div class="item-actions">
+                            <button class="action-btn btn-photo" onclick="takePhoto(${item.id})">
+                                <i class="fas fa-camera"></i> Foto
+                            </button>
+                            <button class="action-btn btn-note" onclick="addNote(${item.id})">
+                                <i class="fas fa-sticky-note"></i> Anotação
+                            </button>
+                            <button class="action-btn btn-nc" onclick="addNonConformity(${item.id})">
+                                <i class="fas fa-times-circle"></i> Não Conforme
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-priority priority-${item.priority}">
+                        ${item.priority === 'high' ? 'Alta' : item.priority === 'medium' ? 'Média' : 'Baixa'}
+                    </div>
+                `;
+                container.appendChild(itemElement);
+            });
+        }
+
+        // Alternar item do checklist
+        function toggleChecklistItem(id) {
+            const item = checklistItems.find(i => i.id === id);
+            if (item) {
+                item.checked = !item.checked;
+                renderChecklist();
+                updateProgress();
+            }
+        }
+
+        // Atualizar progresso
+        function updateProgress() {
+            const totalItems = checklistItems.length;
+            const checkedItems = checklistItems.filter(item => item.checked).length;
+            const progress = Math.round((checkedItems / totalItems) * 100);
+            
+            document.getElementById('progressValue').textContent = `${progress}%`;
+            document.getElementById('progressText').textContent = `${checkedItems} de ${totalItems} itens verificados`;
+            
+            // Atualizar conformidade
+            const ncItems = checklistItems.filter(item => item.hasNC).length;
+            const conformity = Math.round(((checkedItems - ncItems) / checkedItems) * 100) || 0;
+            document.getElementById('conformityValue').textContent = `${conformity}%`;
+            document.getElementById('conformityText').textContent = `${checkedItems - ncItems} itens conformes`;
+            
+            // Atualizar não conformidades
+            document.getElementById('ncValue').textContent = ncItems;
+            
+            // Atualizar evidências
+            const evidenceCount = checklistItems.filter(item => item.hasPhoto || item.hasNote).length;
+            document.getElementById('evidenceValue').textContent = evidenceCount;
+        }
+
+        // Filtrar checklist
+        function filterChecklist(filter) {
+            currentFilter = filter;
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderChecklist();
+        }
+
+        // Funções de interação
+        function takePhoto(itemId) {
+            showNotification('📸 Câmera acionada! Em uma versão real, isso abriria a câmera do dispositivo.');
+            const item = checklistItems.find(i => i.id === itemId);
+            if (item) {
+                item.hasPhoto = true;
+                updateProgress();
+            }
+        }
+
+        function addNote(itemId) {
+            currentNoteItemId = itemId;
+            document.getElementById('noteModal').style.display = 'flex';
+        }
+
+        function saveNote() {
+            if (currentNoteItemId) {
+                const item = checklistItems.find(i => i.id === currentNoteItemId);
+                if (item) {
+                    item.hasNote = true;
+                    updateProgress();
+                    showNotification('📝 Anotação salva com sucesso!');
+                }
+            }
+            closeModal('noteModal');
+        }
+
+        function addNonConformity(itemId) {
+            const item = checklistItems.find(i => i.id === itemId);
+            if (item) {
+                item.hasNC = true;
+                updateProgress();
+                showNotification('⚠️ Não conformidade registrada!');
+                // Atualizar o botão visualmente
+                const button = event.target;
+                button.innerHTML = '<i class="fas fa-times-circle"></i> NC Registrada';
+                button.style.backgroundColor = 'rgba(230, 57, 70, 0.1)';
+            }
+        }
+
+        // Modal functions
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            currentNoteItemId = null;
+            document.getElementById('noteText').value = '';
+        }
+
+        // Funções de navegação
+        function switchTab(tabName) {
+            showNotification(`Abrindo ${tabName}...`);
+            // Em uma aplicação real, aqui carregaria o conteúdo da tab
+        }
+
+        function startNewInspection() {
+            showNotification('🔍 Iniciando nova inspeção...');
+        }
+
+        function pauseInspection() {
+            showNotification('⏸️ Inspeção pausada');
+        }
+
+        function finishInspection() {
+            showNotification('✅ Inspeção finalizada e salva!');
+        }
+
+        function toggleUserMenu() {
+            showNotification('👤 Menu do usuário');
+        }
+
+        // Funções de detalhes
+        function showProgressDetails() {
+            showNotification('📊 Detalhes do progresso da inspeção');
+        }
+
+        function showConformityDetails() {
+            showNotification('✅ Detalhes de conformidade');
+        }
+
+        function showNCDetails() {
+            showNotification('⚠️ Detalhes das não conformidades');
+        }
+
+        function showEvidenceDetails() {
+            showNotification('📷 Galeria de evidências');
+        }
+
+        // Sistema de notificações
+        function showNotification(message) {
+            // Criar elemento de notificação
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            // Adicionar estilos de animação
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
