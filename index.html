@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriInspeção | Plataforma de Auditoria Sanitária</title>
+    <title>Vitalis Assessoria | Excelência em Segurança Alimentar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a936f;
-            --primary-light: #88d498;
-            --secondary: #2a9d8f;
-            --danger: #e63946;
-            --warning: #ffbe0b;
-            --success: #2a9d8f;
-            --dark: #2d3748;
-            --light: #f8f9fa;
-            --gray: #718096;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-            --radius: 12px;
+            --verde-escuro: #1a472a;
+            --verde-medio: #2e7d32;
+            --verde-claro: #4caf50;
+            --dourado: #c9a227;
+            --marrom: #8d6e63;
+            --cinza-escuro: #37474f;
+            --cinza-medio: #78909c;
+            --cinza-claro: #eceff1;
+            --branco: #ffffff;
         }
 
         * {
@@ -29,442 +28,474 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #f5f7fa;
-            color: var(--dark);
+            background-color: var(--branco);
+            color: var(--cinza-escuro);
             line-height: 1.6;
         }
 
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
         /* Header */
-        .app-header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            padding: 1rem 2rem;
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--branco);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
+            transition: all 0.3s ease;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            cursor: pointer;
+            text-decoration: none;
         }
 
-        .logo-icon {
-            color: var(--primary);
-            font-size: 1.8rem;
+        .logo-img {
+            height: 50px;
+            margin-right: 10px;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--verde-escuro);
         }
 
-        .header-actions {
+        .logo-text span {
+            color: var(--dourado);
+        }
+
+        nav ul {
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            height: 100vh;
-            position: fixed;
-            top: 80px;
-            overflow-y: auto;
-        }
-
-        .nav-section {
-            margin-bottom: 2rem;
-        }
-
-        .nav-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-menu {
             list-style: none;
         }
 
-        .nav-item {
-            margin-bottom: 0.5rem;
+        nav ul li {
+            margin-left: 30px;
         }
 
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius);
+        nav ul li a {
             text-decoration: none;
-            color: var(--dark);
-            transition: all 0.2s;
+            color: var(--cinza-escuro);
             font-weight: 500;
-            cursor: pointer;
+            transition: color 0.3s;
+            position: relative;
         }
 
-        .nav-link:hover, .nav-link.active {
-            background: rgba(26, 147, 111, 0.1);
-            color: var(--primary);
+        nav ul li a:hover {
+            color: var(--verde-escuro);
         }
 
-        .nav-link i {
-            width: 20px;
-            text-align: center;
-            font-size: 1.1rem;
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--verde-medio);
+            transition: width 0.3s;
         }
 
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            margin-left: 280px;
-            margin-top: 80px;
-            padding: 2rem;
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .page-title h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .page-title p {
-            color: var(--gray);
-            font-size: 1rem;
-        }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
+        .btn-destaque {
+            background-color: var(--verde-medio);
+            color: var(--branco);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
-            color: var(--dark);
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.2);
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .btn-destaque:hover {
+            background-color: var(--verde-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(46, 125, 50, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
             font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        .icon-success {
-            background: rgba(42, 157, 143, 0.1);
-            color: var(--success);
-        }
-
-        .icon-warning {
-            background: rgba(255, 190, 11, 0.1);
-            color: var(--warning);
-        }
-
-        .icon-danger {
-            background: rgba(230, 57, 70, 0.1);
-            color: var(--danger);
-        }
-
-        .icon-primary {
-            background: rgba(26, 147, 111, 0.1);
-            color: var(--primary);
-        }
-
-        .card-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-text {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Checklist */
-        .checklist-container {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
             overflow: hidden;
+            color: var(--branco);
         }
 
-        .checklist-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
         }
 
-        .checklist-title {
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
             font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--dark);
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
-        .checklist-filters {
+        .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 15px;
         }
 
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            background: var(--white);
-            color: var(--gray);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-        }
-
-        .checklist-items {
-            max-height: 600px;
-            overflow-y: auto;
-        }
-
-        .checklist-item {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            transition: background-color 0.2s;
-        }
-
-        .checklist-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-status {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid #e2e8f0;
-            flex-shrink: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 2px;
-            transition: all 0.2s;
-        }
-
-        .item-status.checked {
-            background: var(--success);
-            border-color: var(--success);
-            color: white;
-        }
-
-        .item-content {
-            flex: 1;
-        }
-
-        .item-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .item-description {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .item-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .action-btn {
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            border: none;
-            background: transparent;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.2s;
-        }
-
-        .btn-photo {
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-
-        .btn-photo:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-note {
-            color: var(--warning);
-            border: 1px solid var(--warning);
-        }
-
-        .btn-note:hover {
-            background: var(--warning);
-            color: white;
-        }
-
-        .btn-nc {
-            color: var(--danger);
-            border: 1px solid var(--danger);
-        }
-
-        .btn-nc:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        .item-priority {
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .priority-high {
-            background: rgba(230, 57, 70, 0.1);
-            color: var(--danger);
-        }
-
-        .priority-medium {
-            background: rgba(255, 190, 11, 0.1);
-            color: var(--warning);
-        }
-
-        .priority-low {
-            background: rgba(42, 157, 143, 0.1);
-            color: var(--success);
-        }
-
-        /* Buttons */
         .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: var(--white);
+            background-color: var(--dourado);
+            color: var(--branco);
+            box-shadow: 0 4px 6px rgba(201, 162, 39, 0.3);
         }
 
         .btn-primary:hover {
-            background: var(--secondary);
+            background-color: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--branco);
+            border: 2px solid var(--branco);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
+        /* Services Section */
+        .services {
+            padding: 100px 10%;
+            background-color: var(--cinza-claro);
         }
 
-        .btn-outline:hover {
-            background: rgba(26, 147, 111, 0.1);
-            transform: translateY(-2px);
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        /* Modal */
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--cinza-escuro);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--verde-medio);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cinza-escuro);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--verde-medio);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--cinza-claro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--verde-medio);
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--cinza-escuro);
+        }
+
+        .service-card p {
+            color: var(--cinza-escuro);
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: var(--verde-medio);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Value Proposition Section */
+        .value-proposition {
+            padding: 100px 10%;
+            background-color: var(--branco);
+        }
+
+        .value-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .value-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--cinza-escuro);
+        }
+
+        .value-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--cinza-escuro);
+        }
+
+        .value-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-point {
+            background-color: var(--cinza-claro);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .value-point:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-point i {
+            font-size: 2.5rem;
+            color: var(--verde-medio);
+            margin-bottom: 20px;
+        }
+
+        .value-point h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--cinza-escuro);
+        }
+
+        .value-point p {
+            font-size: 1rem;
+            color: var(--cinza-escuro);
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 100px 10%;
+            background-color: var(--cinza-claro);
+        }
+
+        .expertise-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .expertise-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background-color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--verde-medio);
+            font-size: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .expertise-content-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--cinza-escuro);
+        }
+
+        .expertise-content-text p {
+            color: var(--cinza-escuro);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 100px 10%;
+            background-color: var(--branco);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .content-card {
+            background-color: var(--cinza-claro);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .content-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .content-card:hover .content-image img {
+            transform: scale(1.05);
+        }
+
+        .content-text {
+            padding: 25px;
+        }
+
+        .content-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--cinza-escuro);
+        }
+
+        .content-text p {
+            color: var(--cinza-escuro);
+            margin-bottom: 20px;
+        }
+
+        .content-link {
+            color: var(--verde-medio);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .content-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .content-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Article Modal */
         .modal {
             display: none;
             position: fixed;
@@ -472,537 +503,889 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
         }
 
         .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            max-width: 500px;
+            background-color: var(--branco);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
             width: 90%;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .modal-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--dark);
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: var(--gray);
+            color: var(--cinza-escuro);
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--verde-medio);
+        }
+
+        .modal-article h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--cinza-escuro);
+        }
+
+        .modal-article img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-article p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-article h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: var(--cinza-escuro);
+        }
+
+        .modal-article ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-article li {
+            margin-bottom: 8px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 10%;
+            background-color: var(--cinza-claro);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--cinza-escuro);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--cinza-escuro);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--branco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--verde-medio);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--cinza-escuro);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--cinza-medio);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--verde-medio);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--verde-medio);
+            color: var(--branco);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--verde-escuro);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--cinza-escuro);
+            color: var(--branco);
+            padding: 70px 10% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--verde-medio);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--cinza-medio);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--verde-medio);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--verde-medio);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--cinza-medio);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 80px;
-                padding: 1rem 0.5rem;
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
-
-            .nav-link span {
+            
+            nav ul {
                 display: none;
             }
-
-            .main-content {
-                margin-left: 80px;
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--branco);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                display: none;
+                flex-direction: column;
+            }
+            
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            .mobile-nav li {
+                margin: 10px 0;
             }
         }
 
         @media (max-width: 768px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 2rem;
             }
-
-            .page-header {
+            
+            .hero-buttons {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+                gap: 10px;
             }
-
-            .checklist-filters {
-                flex-wrap: wrap;
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="app-header">
-            <div class="logo" onclick="showNotification('Dashboard carregado!')">
-                <i class="fas fa-clipboard-check logo-icon"></i>
-                <span class="logo-text">NutriInspeção</span>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-img">
+                <svg width="50" height="50" viewBox="0 0 50 50">
+                    <rect width="50" height="50" fill="#1a472a" rx="8"/>
+                    <text x="25" y="32" text-anchor="middle" fill="#c9a227" font-family="Arial, sans-serif" font-weight="bold" font-size="20">V</text>
+                </svg>
             </div>
-            <div class="header-actions">
-                <div class="user-info" onclick="toggleUserMenu()">
-                    <div class="user-avatar">NC</div>
-                    <span>Nutricionista Carla</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Sidebar -->
-        <nav class="sidebar">
-            <div class="nav-section">
-                <h3 class="nav-title">Principal</h3>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="switchTab('dashboard')">
-                            <i class="fas fa-home"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('checklists')">
-                            <i class="fas fa-clipboard-list"></i>
-                            <span>Checklists</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('agenda')">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Agenda</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h3 class="nav-title">Inspeções</h3>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="startNewInspection()">
-                            <i class="fas fa-play-circle"></i>
-                            <span>Nova Inspeção</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('historico')">
-                            <i class="fas fa-history"></i>
-                            <span>Histórico</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('relatorios')">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Relatórios</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h3 class="nav-title">Gestão</h3>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('estabelecimentos')">
-                            <i class="fas fa-store"></i>
-                            <span>Estabelecimentos</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('nao-conformidades')">
-                            <i class="fas fa-tasks"></i>
-                            <span>Não Conformidades</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="switchTab('configuracoes')">
-                            <i class="fas fa-cog"></i>
-                            <span>Configurações</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <div class="logo-text">Vitalis <span>Assessoria</span></div>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#expertise">Nossa Expertise</a></li>
+                <li><a href="#valor">Vantagens</a></li>
+                <li><a href="#conteudo">Conteúdo</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
+        
+        <a href="https://wa.me/5511963431255?text=Olá! Gostaria de solicitar uma visita técnica da Vitalis Assessoria." class="btn-destaque" target="_blank">Solicitar Visita Técnica</a>
+        
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <ul class="mobile-nav">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#expertise">Nossa Expertise</a></li>
+            <li><a href="#valor">Vantagens</a></li>
+            <li><a href="#conteudo">Conteúdo</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <div class="page-title">
-                    <h1>Inspeção em Andamento</h1>
-                    <p>Restaurante Sabor & Saúde • 15/10/2023</p>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Excelência em Segurança Alimentar para seu Negócio</h1>
+            <p>Consultoria especializada que transforma processos alimentares, garantindo conformidade regulatória, qualidade superior e a confiança dos seus clientes.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de falar com um especialista da Vitalis Assessoria." class="btn btn-primary" target="_blank">Fale com um especialista</a>
+                <a href="#servicos" class="btn btn-secondary">Conhecer serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Soluções completas em consultoria nutricional para garantir a segurança alimentar e conformidade com as normas vigentes.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-utensils"></i>
                 </div>
-                <div class="page-actions">
-                    <button class="btn btn-outline" onclick="pauseInspection()">
-                        <i class="fas fa-pause"></i> Pausar
-                    </button>
-                    <button class="btn btn-primary" onclick="finishInspection()">
-                        <i class="fas fa-save"></i> Salvar e Finalizar
-                    </button>
+                <h3>Inspeções em Restaurantes</h3>
+                <p>Avaliação completa das instalações, processos e documentação para garantir conformidade com as normas da Vigilância Sanitária.</p>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre as Inspeções em Restaurantes." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Consultoria para Supermercados</h3>
+                <p>Otimização da exposição, armazenamento e rotulagem de produtos alimentícios para garantir qualidade e segurança.</p>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre a Consultoria para Supermercados." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Elaboração de POPs e Manuais</h3>
+                <p>Desenvolvimento de Procedimentos Operacionais Padronizados e manuais de boas práticas personalizados para seu negócio.</p>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre a Elaboração de POPs e Manuais." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Treinamento de Equipe</h3>
+                <p>Capacitação da sua equipe em boas práticas de manipulação de alimentos, higiene e segurança alimentar.</p>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre o Treinamento de Equipe." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>Adequação às Normas</h3>
+                <p>Assessoria completa para adequação do seu estabelecimento às normas da Vigilância Sanitária e legislações pertinentes.</p>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre a Adequação às Normas." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Auditorias Periódicas</h3>
+                <p>Monitoramento contínuo através de auditorias regulares para manter a conformidade e qualidade dos processos.</p>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre as Auditorias Periódicas." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise" id="expertise">
+        <div class="section-title">
+            <h2>Nossa Expertise em Segurança Alimentar</h2>
+            <p>Combinamos conhecimento técnico avançado com experiência prática para oferecer soluções que realmente fazem a diferença no seu negócio.</p>
+        </div>
+        
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <div class="expertise-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="expertise-content-text">
+                    <h3>Conformidade Regulatória</h3>
+                    <p>Dominamos a complexa legislação sanitária e garantimos que seu estabelecimento esteja sempre em conformidade.</p>
                 </div>
             </div>
-
-            <!-- Cards de Resumo -->
-            <div class="cards-grid">
-                <div class="card" onclick="showProgressDetails()">
-                    <div class="card-header">
-                        <h3 class="card-title">Progresso</h3>
-                        <div class="card-icon icon-primary">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="card-value" id="progressValue">65%</div>
-                    <p class="card-text" id="progressText">13 de 20 itens verificados</p>
+            
+            <div class="expertise-item">
+                <div class="expertise-icon">
+                    <i class="fas fa-flask"></i>
                 </div>
-
-                <div class="card" onclick="showConformityDetails()">
-                    <div class="card-header">
-                        <h3 class="card-title">Conformidade</h3>
-                        <div class="card-icon icon-success">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                    </div>
-                    <div class="card-value" id="conformityValue">85%</div>
-                    <p class="card-text" id="conformityText">11 itens conformes</p>
-                </div>
-
-                <div class="card" onclick="showNCDetails()">
-                    <div class="card-header">
-                        <h3 class="card-title">Não Conformidades</h3>
-                        <div class="card-icon icon-danger">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                    </div>
-                    <div class="card-value" id="ncValue">2</div>
-                    <p class="card-text">Itens críticos identificados</p>
-                </div>
-
-                <div class="card" onclick="showEvidenceDetails()">
-                    <div class="card-header">
-                        <h3 class="card-title">Evidências</h3>
-                        <div class="card-icon icon-warning">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                    </div>
-                    <div class="card-value" id="evidenceValue">7</div>
-                    <p class="card-text">Fotos e anotações</p>
+                <div class="expertise-content-text">
+                    <h3>Análise de Riscos</h3>
+                    <p>Identificamos e mitigamos potenciais riscos antes que se tornem problemas, protegendo sua marca e consumidores.</p>
                 </div>
             </div>
-
-            <!-- Checklist de Inspeção -->
-            <div class="checklist-container">
-                <div class="checklist-header">
-                    <h2 class="checklist-title">Checklist de Inspeção Sanitária</h2>
-                    <div class="checklist-filters">
-                        <button class="filter-btn active" onclick="filterChecklist('all')">Todos</button>
-                        <button class="filter-btn" onclick="filterChecklist('pending')">Pendentes</button>
-                        <button class="filter-btn" onclick="filterChecklist('completed')">Concluídos</button>
-                        <button class="filter-btn" onclick="filterChecklist('critical')">Críticos</button>
-                    </div>
+            
+            <div class="expertise-item">
+                <div class="expertise-icon">
+                    <i class="fas fa-chart-bar"></i>
                 </div>
-
-                <div class="checklist-items" id="checklistItems">
-                    <!-- Itens serão carregados via JavaScript -->
+                <div class="expertise-content-text">
+                    <h3>Otimização de Processos</h3>
+                    <p>Implementamos melhorias que aumentam a eficiência operacional enquanto mantêm os mais altos padrões de segurança.</p>
                 </div>
             </div>
-        </main>
-    </div>
+            
+            <div class="expertise-item">
+                <div class="expertise-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="expertise-content-text">
+                    <h3>Gestão da Qualidade</h3>
+                    <p>Desenvolvemos sistemas de gestão que garantem consistência e excelência em todos os processos alimentares.</p>
+                </div>
+            </div>
+            
+            <div class="expertise-item">
+                <div class="expertise-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="expertise-content-text">
+                    <h3>Capacitação Contínua</h3>
+                    <p>Treinamos sua equipe para manter os mais altos padrões de higiene e manipulação de alimentos.</p>
+                </div>
+            </div>
+            
+            <div class="expertise-item">
+                <div class="expertise-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="expertise-content-text">
+                    <h3>Sustentabilidade</h3>
+                    <p>Integramos práticas sustentáveis que reduzem desperdícios e promovem responsabilidade ambiental.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Modal para Notas -->
-    <div class="modal" id="noteModal">
+    <!-- Value Proposition Section -->
+    <section class="value-proposition" id="valor">
+        <div class="value-content">
+            <h2>Vantagens de uma Assessoria Especializada</h2>
+            <p>Em um mercado cada vez mais competitivo e regulado, contar com especialistas em segurança alimentar não é mais um diferencial, mas uma necessidade estratégica para o sucesso do seu negócio.</p>
+            
+            <div class="value-points">
+                <div class="value-point">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Conformidade Legal</h3>
+                    <p>Mantenha-se atualizado com as constantes mudanças na legislação da Vigilância Sanitária e evite multas e penalidades.</p>
+                </div>
+                
+                <div class="value-point">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Eficiência Operacional</h3>
+                    <p>Otimizamos seus processos para reduzir custos, aumentar produtividade e manter a qualidade consistente.</p>
+                </div>
+                
+                <div class="value-point">
+                    <i class="fas fa-award"></i>
+                    <h3>Diferencial Competitivo</h3>
+                    <p>Diferencie-se no mercado com selos de qualidade e processos certificados que inspiram confiança.</p>
+                </div>
+                
+                <div class="value-point">
+                    <i class="fas fa-heart"></i>
+                    <h3>Proteção ao Consumidor</h3>
+                    <p>Garanta a segurança dos seus clientes e construa uma reputação sólida baseada na qualidade e transparência.</p>
+                </div>
+            </div>
+            
+            <a href="https://wa.me/5511963431255?text=Olá! Gostaria de conhecer as vantagens de uma assessoria especializada para meu negócio." class="btn btn-primary" style="margin-top: 40px;" target="_blank">Quero essas Vantagens</a>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section" id="conteudo">
+        <div class="section-title">
+            <h2>Conteúdo Educativo</h2>
+            <p>Artigos e informações sobre boas práticas, legislação e tendências em segurança alimentar.</p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boas Práticas">
+                </div>
+                <div class="content-text">
+                    <h3>5 Boas Práticas Essenciais para Restaurantes</h3>
+                    <p>Conheça as práticas fundamentais que todo estabelecimento alimentício deve adotar para garantir a segurança dos alimentos.</p>
+                    <a href="#" class="content-link" data-article="article1">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Legislação">
+                </div>
+                <div class="content-text">
+                    <h3>Mudanças na Legislação da Vigilância Sanitária</h3>
+                    <p>Fique por dentro das novas normas e regulamentações que afetam o setor de alimentação em 2023.</p>
+                    <a href="#" class="content-link" data-article="article2">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rotulagem">
+                </div>
+                <div class="content-text">
+                    <h3>Novas Regras de Rotulagem Nutricional</h3>
+                    <p>Entenda as mudanças na rotulagem de alimentos e como se preparar para atender às novas exigências.</p>
+                    <a href="#" class="content-link" data-article="article3">Ler mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modals -->
+    <div id="articleModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Adicionar Anotação</h3>
-                <button class="close-modal" onclick="closeModal('noteModal')">&times;</button>
-            </div>
-            <textarea id="noteText" placeholder="Digite sua anotação aqui..." style="width: 100%; height: 150px; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; resize: vertical;"></textarea>
-            <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: flex-end;">
-                <button class="btn btn-outline" onclick="closeModal('noteModal')">Cancelar</button>
-                <button class="btn btn-primary" onclick="saveNote()">Salvar Anotação</button>
+            <span class="close-modal">&times;</span>
+            <div class="modal-article" id="modalArticleContent">
+                <!-- Content will be loaded here by JavaScript -->
             </div>
         </div>
     </div>
 
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="section-title">
+            <h2>Entre em Contato</h2>
+            <p>Estamos prontos para ajudar seu negócio a alcançar a excelência em segurança alimentar.</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Vamos conversar?</h3>
+                <p>Entre em contato conosco para agendar uma visita técnica ou solicitar uma proposta personalizada para seu negócio.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(11) 96343-1255</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Segunda a Sexta: 8h às 18h</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/5511963431255?text=Olá! Gostaria de mais informações sobre a Vitalis Assessoria." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Serviço de Interesse</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">Selecione um serviço</option>
+                            <option value="inspecao">Inspeções em Restaurantes</option>
+                            <option value="consultoria">Consultoria para Supermercados</option>
+                            <option value="pops">Elaboração de POPs e Manuais</option>
+                            <option value="treinamento">Treinamento de Equipe</option>
+                            <option value="adequacao">Adequação às Normas</option>
+                            <option value="auditoria">Auditorias Periódicas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Vitalis Assessoria</h3>
+                <p>Especialistas em consultoria e inspeções nutricionais para restaurantes, supermercados e cozinhas industriais.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/5511963431255?text=Olá! Gostaria de mais informações sobre a Vitalis Assessoria." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#expertise">Nossa Expertise</a></li>
+                    <li><a href="#valor">Vantagens</a></li>
+                    <li><a href="#conteudo">Conteúdo</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#">Inspeções em Restaurantes</a></li>
+                    <li><a href="#">Consultoria para Supermercados</a></li>
+                    <li><a href="#">Elaboração de POPs e Manuais</a></li>
+                    <li><a href="#">Treinamento de Equipe</a></li>
+                    <li><a href="#">Adequação às Normas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> (11) 96343-1255</li>
+                    <li><i class="fas fa-clock"></i> Segunda a Sexta: 8h às 18h</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Vitalis Assessoria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
     <script>
-        // Dados do checklist
-        const checklistItems = [
-            {
-                id: 1,
-                title: "Higiene dos Manipuladores",
-                description: "Verificar uso de uniforme completo, unhas curtas e limpas, ausência de adornos.",
-                checked: true,
-                priority: "low",
-                hasNote: false,
-                hasPhoto: false,
-                hasNC: false
-            },
-            {
-                id: 2,
-                title: "Controle de Temperatura",
-                description: "Freezers abaixo de -18°C e geladeiras abaixo de 5°C. Verificar termômetros calibrados.",
-                checked: true,
-                priority: "high",
-                hasNote: false,
-                hasPhoto: false,
-                hasNC: false
-            },
-            {
-                id: 3,
-                title: "Armazenamento de Alimentos",
-                description: "Produtos organizados por categoria, afastados do solo, com identificação de validade.",
-                checked: false,
-                priority: "medium",
-                hasNote: false,
-                hasPhoto: false,
-                hasNC: false
-            },
-            {
-                id: 4,
-                title: "Limpeza de Equipamentos",
-                description: "Superfícies, utensílios e equipamentos limpos e sanitizados adequadamente.",
-                checked: false,
-                priority: "medium",
-                hasNote: false,
-                hasPhoto: false,
-                hasNC: false
-            },
-            {
-                id: 5,
-                title: "Controle de Pragas",
-                description: "Ausência de sinais de pragas, ralos protegidos, vedação de aberturas.",
-                checked: true,
-                priority: "high",
-                hasNote: false,
-                hasPhoto: false,
-                hasNC: false
-            }
-        ];
-
-        let currentFilter = 'all';
-        let currentNoteItemId = null;
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            renderChecklist();
-            updateProgress();
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.mobile-nav').classList.toggle('active');
         });
 
-        // Renderizar checklist
-        function renderChecklist() {
-            const container = document.getElementById('checklistItems');
-            container.innerHTML = '';
-
-            const filteredItems = checklistItems.filter(item => {
-                if (currentFilter === 'pending') return !item.checked;
-                if (currentFilter === 'completed') return item.checked;
-                if (currentFilter === 'critical') return item.priority === 'high';
-                return true;
-            });
-
-            filteredItems.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'checklist-item';
-                itemElement.innerHTML = `
-                    <div class="item-status ${item.checked ? 'checked' : ''}" onclick="toggleChecklistItem(${item.id})">
-                        ${item.checked ? '<i class="fas fa-check"></i>' : ''}
-                    </div>
-                    <div class="item-content">
-                        <h3 class="item-title">${item.title}</h3>
-                        <p class="item-description">${item.description}</p>
-                        <div class="item-actions">
-                            <button class="action-btn btn-photo" onclick="takePhoto(${item.id})">
-                                <i class="fas fa-camera"></i> Foto
-                            </button>
-                            <button class="action-btn btn-note" onclick="addNote(${item.id})">
-                                <i class="fas fa-sticky-note"></i> Anotação
-                            </button>
-                            <button class="action-btn btn-nc" onclick="addNonConformity(${item.id})">
-                                <i class="fas fa-times-circle"></i> Não Conforme
-                            </button>
-                        </div>
-                    </div>
-                    <div class="item-priority priority-${item.priority}">
-                        ${item.priority === 'high' ? 'Alta' : item.priority === 'medium' ? 'Média' : 'Baixa'}
-                    </div>
-                `;
-                container.appendChild(itemElement);
-            });
-        }
-
-        // Alternar item do checklist
-        function toggleChecklistItem(id) {
-            const item = checklistItems.find(i => i.id === id);
-            if (item) {
-                item.checked = !item.checked;
-                renderChecklist();
-                updateProgress();
-            }
-        }
-
-        // Atualizar progresso
-        function updateProgress() {
-            const totalItems = checklistItems.length;
-            const checkedItems = checklistItems.filter(item => item.checked).length;
-            const progress = Math.round((checkedItems / totalItems) * 100);
-            
-            document.getElementById('progressValue').textContent = `${progress}%`;
-            document.getElementById('progressText').textContent = `${checkedItems} de ${totalItems} itens verificados`;
-            
-            // Atualizar conformidade
-            const ncItems = checklistItems.filter(item => item.hasNC).length;
-            const conformity = Math.round(((checkedItems - ncItems) / checkedItems) * 100) || 0;
-            document.getElementById('conformityValue').textContent = `${conformity}%`;
-            document.getElementById('conformityText').textContent = `${checkedItems - ncItems} itens conformes`;
-            
-            // Atualizar não conformidades
-            document.getElementById('ncValue').textContent = ncItems;
-            
-            // Atualizar evidências
-            const evidenceCount = checklistItems.filter(item => item.hasPhoto || item.hasNote).length;
-            document.getElementById('evidenceValue').textContent = evidenceCount;
-        }
-
-        // Filtrar checklist
-        function filterChecklist(filter) {
-            currentFilter = filter;
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderChecklist();
-        }
-
-        // Funções de interação
-        function takePhoto(itemId) {
-            showNotification('📸 Câmera acionada! Em uma versão real, isso abriria a câmera do dispositivo.');
-            const item = checklistItems.find(i => i.id === itemId);
-            if (item) {
-                item.hasPhoto = true;
-                updateProgress();
-            }
-        }
-
-        function addNote(itemId) {
-            currentNoteItemId = itemId;
-            document.getElementById('noteModal').style.display = 'flex';
-        }
-
-        function saveNote() {
-            if (currentNoteItemId) {
-                const item = checklistItems.find(i => i.id === currentNoteItemId);
-                if (item) {
-                    item.hasNote = true;
-                    updateProgress();
-                    showNotification('📝 Anotação salva com sucesso!');
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.mobile-nav').classList.remove('active');
                 }
-            }
-            closeModal('noteModal');
-        }
+            });
+        });
 
-        function addNonConformity(itemId) {
-            const item = checklistItems.find(i => i.id === itemId);
-            if (item) {
-                item.hasNC = true;
-                updateProgress();
-                showNotification('⚠️ Não conformidade registrada!');
-                // Atualizar o botão visualmente
-                const button = event.target;
-                button.innerHTML = '<i class="fas fa-times-circle"></i> NC Registrada';
-                button.style.backgroundColor = 'rgba(230, 57, 70, 0.1)';
-            }
-        }
-
-        // Modal functions
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            currentNoteItemId = null;
-            document.getElementById('noteText').value = '';
-        }
-
-        // Funções de navegação
-        function switchTab(tabName) {
-            showNotification(`Abrindo ${tabName}...`);
-            // Em uma aplicação real, aqui carregaria o conteúdo da tab
-        }
-
-        function startNewInspection() {
-            showNotification('🔍 Iniciando nova inspeção...');
-        }
-
-        function pauseInspection() {
-            showNotification('⏸️ Inspeção pausada');
-        }
-
-        function finishInspection() {
-            showNotification('✅ Inspeção finalizada e salva!');
-        }
-
-        function toggleUserMenu() {
-            showNotification('👤 Menu do usuário');
-        }
-
-        // Funções de detalhes
-        function showProgressDetails() {
-            showNotification('📊 Detalhes do progresso da inspeção');
-        }
-
-        function showConformityDetails() {
-            showNotification('✅ Detalhes de conformidade');
-        }
-
-        function showNCDetails() {
-            showNotification('⚠️ Detalhes das não conformidades');
-        }
-
-        function showEvidenceDetails() {
-            showNotification('📷 Galeria de evidências');
-        }
-
-        // Sistema de notificações
-        function showNotification(message) {
-            // Criar elemento de notificação
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--primary);
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
-                z-index: 10000;
-                animation: slideIn 0.3s ease;
-                max-width: 300px;
-            `;
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Adicionar estilos de animação
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const company = document.getElementById('company').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Olá! Me chamo ${name} da empresa ${company}. Gostaria de informações sobre ${service}. ${message}. Meu telefone é ${phone} e meu e-mail é ${email}.`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/5511963431255?text=${encodedMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.padding = '10px 5%';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '15px 5%';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Article Modal Functionality
+        const modal = document.getElementById('articleModal');
+        const modalContent = document.getElementById('modalArticleContent');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Article content
+        const articles = {
+            article1: {
+                title: "5 Boas Práticas Essenciais para Restaurantes",
+                image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p>Manter altos padrões de segurança alimentar é fundamental para o sucesso de qualquer estabelecimento do setor. Conheça as 5 práticas essenciais que todo restaurante deve adotar:</p>
+                    
+                    <h3>1. Higiene Pessoal Rigorosa</h3>
+                    <p>A equipe deve seguir protocolos rigorosos de higiene, incluindo lavagem frequente das mãos, uso de uniformes adequados e manter unhas curtas e limpas. Funcionários com sintomas de doenças devem ser afastados das áreas de manipulação de alimentos.</p>
+                    
+                    <h3>2. Controle de Temperatura</h3>
+                    <p>Monitorar e registrar as temperaturas de alimentos é crucial para prevenir a multiplicação de microrganismos. Alimentos perecíveis devem ser mantidos abaixo de 5°C ou acima de 60°C, conforme o caso.</p>
+                    
+                    <h3>3. Armazenamento Adequado</h3>
+                    <p>Implementar o sistema PEPS (Primeiro que Entra, Primeiro que Sai) e manter adequada separação entre alimentos crus e cozidos são práticas fundamentais para garantir a qualidade e segurança dos produtos.</p>
+                    
+                    <h3>4. Limpeza e Sanitização</h3>
+                    <p>Estabelecer procedimentos claros para limpeza e sanitização de todas as áreas, equipamentos e utensílios. A sanitização deve ser realizada após cada ciclo de limpeza para eliminar microrganismos patogênicos.</p>
+                    
+                    <h3>5. Rastreabilidade</h3>
+                    <p>Manter registros detalhados que permitam rastrear a origem dos ingredientes e o destino dos produtos preparados. Esta prática é essencial em caso de recalls e para garantir a qualidade dos insumos.</p>
+                    
+                    <p>Implementar essas práticas não apenas garante a conformidade com as normas sanitárias, mas também constrói a confiança dos clientes e protege a reputação do seu estabelecimento.</p>
+                `
+            },
+            article2: {
+                title: "Mudanças na Legislação da Vigilância Sanitária",
+                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p>O ano de 2023 trouxe importantes atualizações na legislação sanitária que afetam diretamente estabelecimentos alimentícios. Conheça as principais mudanças:</p>
+                    
+                    <h3>Novas Exigências para Food Trucks</h3>
+                    <p>A RDC nº 216/2023 estabelece requisitos específicos para food trucks, incluindo a obrigatoriedade de sistema de água potável independente e capacitação específica para os manipuladores.</p>
+                    
+                    <h3>Rotulagem de Alérgenos</h3>
+                    <p>Agora é obrigatória a declaração destacada dos principais alérgenos alimentares, incluindo glúten, lactose, crustáceos, ovos, peixes, amendoim e soja. A informação deve constar em local visível e com destaque.</p>
+                    
+                    <h3>Controle de Óleos e Gorduras</h3>
+                    <p>Novos limites foram estabelecidos para a reutilização de óleos e gorduras em frituras, com obrigatoriedade de registro contínuo e análise laboratorial periódica.</p>
+                    
+                    <h3>Exigências para Comércio Eletrônico</h3>
+                    <p>Estabelecimentos que comercializam alimentos por delivery ou plataformas digitais devem atender a requisitos específicos de embalagem, transporte e manutenção da temperatura.</p>
+                    
+                    <h3>Documentação Digital</h3>
+                    <p>Agora é permitido o armazenamento digital de documentos como fichas de treinamento, registros de temperatura e laudos laboratoriais, desde que garantida sua integridade e acessibilidade.</p>
+                    
+                    <p>Manter-se atualizado com essas mudanças é essencial para evitar penalidades e garantir a continuidade do seu negócio. A Vitalis Assessoria oferece consultoria especializada para ajudar na adequação à nova legislação.</p>
+                `
+            },
+            article3: {
+                title: "Novas Regras de Rotulagem Nutricional",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                content: `
+                    <p>A partir de outubro de 2023, entram em vigor as novas regras de rotulagem nutricional no Brasil. Conheça as principais mudanças e como se preparar:</p>
+                    
+                    <h3>Lupa de Açúcares, Gorduras e Sódio</h3>
+                    <p>Os produtos que contiverem quantidades elevadas de açúcares adicionados, gorduras saturadas ou sódio deverão exibir na frente da embalagem um símbolo de lupa alertando o consumidor.</p>
+                    
+                    <h3>Novas Mensagens de Alerta</h3>
+                    <p>Além do símbolo de lupa, as embalagens deverão conter as mensagens "ALTO EM" seguido do nutriente em questão, em local destacado e de fácil visualização.</p>
+                    
+                    <h3>Informações por 100g ou 100ml</h3>
+                    <p>A tabela nutricional passa a ser obrigatoriamente declarada por 100g ou 100ml do produto, facilitando a comparação entre diferentes marcas e produtos.</p>
+                    
+                    <h3>Declaração de Açúcares Adicionados</h3>
+                    <p>Torna-se obrigatória a declaração separada dos açúcares totais e açúcares adicionados, permitindo ao consumidor identificar a quantidade de açúcar naturalmente presente e a adicionada durante o processamento.</p>
+                    
+                    <h3>Prazo para Adequação</h3>
+                    <p>Os produtos fabricados a partir de 9 de outubro de 2023 devem estar de acordo com as novas regras. Para produtos já fabricados anteriormente, há um prazo de adequação até 2025.</p>
+                    
+                    <h3>Impacto nos Estabelecimentos</h3>
+                    <p>Restaurantes, lanchonetes e estabelecimentos que produzem alimentos para venda direta ao consumidor também precisam se adequar, especialmente em relação à declaração de alérgenos e informações nutricionais quando solicitadas.</p>
+                    
+                    <p>A Vitalis Assessoria oferece serviços especializados para ajudar na transição para as novas regras de rotulagem, desde a análise de fórmulas até a adequação completa dos rótulos.</p>
+                `
+            }
+        };
+
+        // Open modal when content link is clicked
+        document.querySelectorAll('.content-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const articleId = this.getAttribute('data-article');
+                const article = articles[articleId];
+                
+                if (article) {
+                    modalContent.innerHTML = `
+                        <h2>${article.title}</h2>
+                        <img src="${article.image}" alt="${article.title}">
+                        ${article.content}
+                    `;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
                 }
-            `;
-            document.head.appendChild(style);
-            
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Remover após 3 segundos
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
     </script>
 </body>
 </html>
