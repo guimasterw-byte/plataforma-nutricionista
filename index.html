@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitalis Assessoria | Excelência em Segurança Alimentar</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -25,7 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         html {
@@ -528,78 +525,6 @@
             transform: translateX(5px);
         }
 
-        /* Article Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background-color: var(--branco);
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 800px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--cinza-escuro);
-            transition: color 0.3s;
-        }
-
-        .close-modal:hover {
-            color: var(--verde-medio);
-        }
-
-        .modal-article h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--cinza-escuro);
-        }
-
-        .modal-article img {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .modal-article p {
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-
-        .modal-article h3 {
-            font-size: 1.5rem;
-            margin: 25px 0 15px;
-            color: var(--cinza-escuro);
-        }
-
-        .modal-article ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .modal-article li {
-            margin-bottom: 8px;
-        }
-
         /* Contact Section */
         .contact {
             padding: 100px 10%;
@@ -1099,59 +1024,6 @@
         </div>
     </section>
 
-    <!-- Content Section -->
-    <section class="content-section" id="conteudo">
-        <div class="section-title">
-            <h2>Conteúdo Educativo</h2>
-            <p>Artigos e informações sobre boas práticas, legislação e tendências em segurança alimentar.</p>
-        </div>
-        
-        <div class="content-grid">
-            <div class="content-card">
-                <div class="content-image">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Inspeção em Cozinha Profissional">
-                </div>
-                <div class="content-text">
-                    <h3>5 Boas Práticas Essenciais para Restaurantes</h3>
-                    <p>Conheça as práticas fundamentais que todo estabelecimento alimentício deve adotar para garantir a segurança dos alimentos.</p>
-                    <a href="#" class="content-link" data-article="article1">Ler mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="content-card">
-                <div class="content-image">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Legislação e Documentação">
-                </div>
-                <div class="content-text">
-                    <h3>Mudanças na Legislação da Vigilância Sanitária</h3>
-                    <p>Fique por dentro das novas normas e regulamentações que afetam o setor de alimentação em 2023.</p>
-                    <a href="#" class="content-link" data-article="article2">Ler mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="content-card">
-                <div class="content-image">
-                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Rotulagem Nutricional">
-                </div>
-                <div class="content-text">
-                    <h3>Novas Regras de Rotulagem Nutricional</h3>
-                    <p>Entenda as mudanças na rotulagem de alimentos e como se preparar para atender às novas exigências.</p>
-                    <a href="#" class="content-link" data-article="article3">Ler mais <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Article Modals -->
-    <div id="articleModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-article" id="modalArticleContent">
-                <!-- Content will be loaded here by JavaScript -->
-            </div>
-        </div>
-    </div>
-
     <!-- Contact Section -->
     <section class="contact" id="contato">
         <div class="section-title">
@@ -1252,7 +1124,6 @@
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#expertise">Nossa Expertise</a></li>
                     <li><a href="#valor">Vantagens</a></li>
-                    <li><a href="#conteudo">Conteúdo</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
@@ -1296,7 +1167,6 @@
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#expertise">Nossa Expertise</a></li>
                     <li><a href="#valor">Vantagens</a></li>
-                    <li><a href="#conteudo">Conteúdo</a></li>
                     <li><a href="#contato">Contato</a></li>
                 `;
                 document.querySelector('header').appendChild(mobileNav);
@@ -1360,123 +1230,6 @@
             } else {
                 header.style.padding = '15px 5%';
                 header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-            }
-        });
-
-        // Article Modal Functionality
-        const modal = document.getElementById('articleModal');
-        const modalContent = document.getElementById('modalArticleContent');
-        const closeModal = document.querySelector('.close-modal');
-        
-        // Article content
-        const articles = {
-            article1: {
-                title: "5 Boas Práticas Essenciais para Restaurantes",
-                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-                content: `
-                    <p>Manter altos padrões de segurança alimentar é fundamental para o sucesso de qualquer estabelecimento do setor. Conheça as 5 práticas essenciais que todo restaurante deve adotar:</p>
-                    
-                    <h3>1. Higiene Pessoal Rigorosa</h3>
-                    <p>A equipe deve seguir protocolos rigorosos de higiene, incluindo lavagem frequente das mãos, uso de uniformes adequados e manter unhas curtas e limpas. Funcionários com sintomas de doenças devem ser afastados das áreas de manipulação de alimentos.</p>
-                    
-                    <h3>2. Controle de Temperatura</h3>
-                    <p>Monitorar e registrar as temperaturas de alimentos é crucial para prevenir a multiplicação de microrganismos. Alimentos perecíveis devem ser mantidos abaixo de 5°C ou acima de 60°C, conforme o caso.</p>
-                    
-                    <h3>3. Armazenamento Adequado</h3>
-                    <p>Implementar o sistema PEPS (Primeiro que Entra, Primeiro que Sai) e manter adequada separação entre alimentos crus e cozidos são práticas fundamentais para garantir a qualidade e segurança dos produtos.</p>
-                    
-                    <h3>4. Limpeza e Sanitização</h3>
-                    <p>Estabelecer procedimentos claros para limpeza e sanitização de todas as áreas, equipamentos e utensílios. A sanitização deve ser realizada após cada ciclo de limpeza para eliminar microrganismos patogênicos.</p>
-                    
-                    <h3>5. Rastreabilidade</h3>
-                    <p>Manter registros detalhados que permitam rastrear a origem dos ingredientes e o destino dos produtos preparados. Esta prática é essencial em caso de recalls e para garantir a qualidade dos insumos.</p>
-                    
-                    <p>Implementar essas práticas não apenas garante a conformidade com as normas sanitárias, mas também constrói a confiança dos clientes e protege a reputação do seu estabelecimento.</p>
-                `
-            },
-            article2: {
-                title: "Mudanças na Legislação da Vigilância Sanitária",
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-                content: `
-                    <p>O ano de 2023 trouxe importantes atualizações na legislação sanitária que afetam diretamente estabelecimentos alimentícios. Conheça as principais mudanças:</p>
-                    
-                    <h3>Novas Exigências para Food Trucks</h3>
-                    <p>A RDC nº 216/2023 estabelece requisitos específicos para food trucks, incluindo a obrigatoriedade de sistema de água potável independente e capacitação específica para os manipuladores.</p>
-                    
-                    <h3>Rotulagem de Alérgenos</h3>
-                    <p>Agora é obrigatória a declaração destacada dos principais alérgenos alimentares, incluindo glúten, lactose, crustáceos, ovos, peixes, amendoim e soja. A informação deve constar em local visível e com destaque.</p>
-                    
-                    <h3>Controle de Óleos e Gorduras</h3>
-                    <p>Novos limites foram estabelecidos para a reutilização de óleos e gorduras em frituras, com obrigatoriedade de registro contínuo e análise laboratorial periódica.</p>
-                    
-                    <h3>Exigências para Comércio Eletrônico</h3>
-                    <p>Estabelecimentos que comercializam alimentos por delivery ou plataformas digitais devem atender a requisitos específicos de embalagem, transporte e manutenção da temperatura.</p>
-                    
-                    <h3>Documentação Digital</h3>
-                    <p>Agora é permitido o armazenamento digital de documentos como fichas de treinamento, registros de temperatura e laudos laboratoriais, desde que garantida sua integridade e acessibilidade.</p>
-                    
-                    <p>Manter-se atualizado com essas mudanças é essencial para evitar penalidades e garantir a continuidade do seu negócio. A Vitalis Assessoria oferece consultoria especializada para ajudar na adequação à nova legislação.</p>
-                `
-            },
-            article3: {
-                title: "Novas Regras de Rotulagem Nutricional",
-                image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-                content: `
-                    <p>A partir de outubro de 2023, entram em vigor as novas regras de rotulagem nutricional no Brasil. Conheça as principais mudanças e como se preparar:</p>
-                    
-                    <h3>Lupa de Açúcares, Gorduras e Sódio</h3>
-                    <p>Os produtos que contiverem quantidades elevadas de açúcares adicionados, gorduras saturadas ou sódio deverão exibir na frente da embalagem um símbolo de lupa alertando o consumidor.</p>
-                    
-                    <h3>Novas Mensagens de Alerta</h3>
-                    <p>Além do símbolo de lupa, as embalagens deverão conter as mensagens "ALTO EM" seguido do nutriente em questão, em local destacado e de fácil visualização.</p>
-                    
-                    <h3>Informações por 100g ou 100ml</h3>
-                    <p>A tabela nutricional passa a ser obrigatoriamente declarada por 100g ou 100ml do produto, facilitando a comparação entre diferentes marcas e produtos.</p>
-                    
-                    <h3>Declaração de Açúcares Adicionados</h3>
-                    <p>Torna-se obrigatória a declaração separada dos açúcares totais e açúcares adicionados, permitindo ao consumidor identificar a quantidade de açúcar naturalmente presente e a adicionada durante o processamento.</p>
-                    
-                    <h3>Prazo para Adequação</h3>
-                    <p>Os produtos fabricados a partir de 9 de outubro de 2023 devem estar de acordo com as novas regras. Para produtos já fabricados anteriormente, há um prazo de adequação até 2025.</p>
-                    
-                    <h3>Impacto nos Estabelecimentos</h3>
-                    <p>Restaurantes, lanchonetes e estabelecimentos que produzem alimentos para venda direta ao consumidor também precisam se adequar, especialmente em relação à declaração de alérgenos e informações nutricionais quando solicitadas.</p>
-                    
-                    <p>A Vitalis Assessoria oferece serviços especializados para ajudar na transição para as novas regras de rotulagem, desde a análise de fórmulas até a adequação completa dos rótulos.</p>
-                `
-            }
-        };
-
-        // Open modal when content link is clicked
-        document.querySelectorAll('.content-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const articleId = this.getAttribute('data-article');
-                const article = articles[articleId];
-                
-                if (article) {
-                    modalContent.innerHTML = `
-                        <h2>${article.title}</h2>
-                        <img src="${article.image}" alt="${article.title}">
-                        ${article.content}
-                    `;
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
-
-        // Close modal
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
             }
         });
     </script>
