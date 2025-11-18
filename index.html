@@ -309,6 +309,93 @@
             transform: translateX(5px);
         }
 
+        /* Plans Section */
+        .plans {
+            padding: 100px 10%;
+            background-color: var(--branco);
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .plan-card {
+            background-color: var(--cinza-claro);
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card.featured {
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+            color: var(--branco);
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured h3,
+        .plan-card.featured .price,
+        .plan-card.featured .plan-features li {
+            color: var(--branco);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .plan-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--cinza-escuro);
+        }
+
+        .plan-card.featured h3 {
+            color: var(--branco);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--verde-medio);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--cinza-escuro);
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde-medio);
+            font-weight: bold;
+        }
+
+        .plan-card.featured .plan-features li::before {
+            color: var(--dourado);
+        }
+
         /* Value Proposition Section */
         .value-proposition {
             padding: 100px 10%;
@@ -437,79 +524,68 @@
             color: var(--cinza-escuro);
         }
 
-        /* Content Section */
-        .content-section {
+        /* Coming Soon Section */
+        .coming-soon {
             padding: 100px 10%;
-            background-color: var(--branco);
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            text-align: center;
         }
 
-        .content-grid {
+        .coming-soon h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .coming-soon p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .club-benefits {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
-        .content-card {
-            background-color: var(--cinza-claro);
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
             transition: all 0.3s;
         }
 
-        .content-card:hover {
+        .benefit-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
-        .content-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .content-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .content-card:hover .content-image img {
-            transform: scale(1.05);
-        }
-
-        .content-text {
-            padding: 25px;
-        }
-
-        .content-text h3 {
+        .benefit-card h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--cinza-escuro);
+            color: var(--dourado);
         }
 
-        .content-text p {
-            color: var(--cinza-escuro);
-            margin-bottom: 20px;
+        .benefit-card ul {
+            list-style: none;
         }
 
-        .content-link {
-            color: var(--verde-medio);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.3s;
+        .benefit-card li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
         }
 
-        .content-link i {
-            margin-left: 5px;
-            transition: transform 0.3s;
-        }
-
-        .content-link:hover i {
-            transform: translateX(5px);
+        .benefit-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--dourado);
         }
 
         /* Contact Section */
@@ -743,6 +819,14 @@
             .mobile-nav li {
                 margin: 10px 0;
             }
+            
+            .plan-card.featured {
+                transform: scale(1);
+            }
+            
+            .plan-card.featured:hover {
+                transform: translateY(-10px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -783,9 +867,9 @@
             <ul>
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#planos">Planos</a></li>
                 <li><a href="#expertise">Nossa Expertise</a></li>
-                <li><a href="#valor">Vantagens</a></li>
-                <li><a href="#conteudo">Conteúdo</a></li>
+                <li><a href="#breve">Em Breve</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
@@ -804,7 +888,7 @@
             <p>Consultoria especializada que transforma processos alimentares, garantindo conformidade regulatória, qualidade superior e a confiança dos seus clientes.</p>
             <div class="hero-buttons">
                 <a href="https://wa.me/5511963431255?text=Olá! Gostaria de falar com um especialista da Vitalis Assessoria." class="btn btn-primary" target="_blank">Fale com um especialista</a>
-                <a href="#servicos" class="btn btn-secondary">Conhecer serviços</a>
+                <a href="#planos" class="btn btn-secondary">Conhecer planos</a>
             </div>
         </div>
     </section>
@@ -870,24 +954,51 @@
                 <p>Monitoramento contínuo através de auditorias regulares para manter a conformidade e qualidade dos processos.</p>
                 <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre as Auditorias Periódicas." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
             </div>
+        </div>
+    </section>
 
-            <!-- Novos serviços adicionados -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-warehouse"></i>
-                </div>
-                <h3>Consultoria para Cozinhas Industriais</h3>
-                <p>Otimização de processos em larga escala, garantindo eficiência e segurança em ambientes de produção alimentar industrial.</p>
-                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre Consultoria para Cozinhas Industriais." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+    <!-- Plans Section -->
+    <section class="plans" id="planos">
+        <div class="section-title">
+            <h2>Nossos Planos</h2>
+            <p>Escolha o plano ideal para as necessidades do seu estabelecimento</p>
+        </div>
+        
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>PLANO ESSENCIAL</h3>
+                <div class="price">Sob Consulta</div>
+                <ul class="plan-features">
+                    <li>Vistoria Mensal</li>
+                    <li>Report Avançado</li>
+                    <li>Plano de Ação e Melhorias</li>
+                    <li>LIBRA (Lista Básica de Recursos e Abastecimento)</li>
+                </ul>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de informações sobre o Plano Essencial." class="btn btn-primary" target="_blank">Contratar</a>
             </div>
             
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-vial"></i>
-                </div>
-                <h3>Análises Laboratoriais</h3>
-                <p>Realização de análises microbiológicas e físico-químicas para garantir a qualidade e segurança dos alimentos.</p>
-                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de saber mais sobre Análises Laboratoriais." class="service-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+            <div class="plan-card featured">
+                <h3>PLANO PLUS</h3>
+                <div class="price">Sob Consulta</div>
+                <ul class="plan-features">
+                    <li>Vistoria Quinzenal</li>
+                    <li>Auditoria Trimestral</li>
+                    <li>Treinamento de Equipe</li>
+                    <li>Todos os benefícios do Plano Essencial</li>
+                </ul>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de informações sobre o Plano Plus." class="btn btn-primary" target="_blank">Contratar</a>
+            </div>
+            
+            <div class="plan-card">
+                <h3>PLANO PREMIUM</h3>
+                <div class="price">Sob Consulta</div>
+                <ul class="plan-features">
+                    <li>Programa de Saúde ao Manipulador (a cada 2 meses)</li>
+                    <li>Acesso ao Clube Vitalis</li>
+                    <li>Palestras e Dias de Bem-Estar</li>
+                    <li>Todos os benefícios do Plano Plus</li>
+                </ul>
+                <a href="https://wa.me/5511963431255?text=Olá! Gostaria de informações sobre o Plano Premium." class="btn btn-primary" target="_blank">Contratar</a>
             </div>
         </div>
     </section>
@@ -962,52 +1073,31 @@
         </div>
     </section>
 
-    <!-- Value Proposition Section -->
-    <section class="value-proposition" id="valor">
-        <div class="value-content">
-            <h2>Vantagens de uma Assessoria Especializada</h2>
-            <p>Em um mercado cada vez mais competitivo e regulado, contar com especialistas em segurança alimentar não é mais um diferencial, mas uma necessidade estratégica para o sucesso do seu negócio.</p>
-            
-            <div class="value-points">
-                <div class="value-point">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Conformidade Legal</h3>
-                    <p>Mantenha-se atualizado com as constantes mudanças na legislação da Vigilância Sanitária e evite multas e penalidades.</p>
-                </div>
-                
-                <div class="value-point">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Eficiência Operacional</h3>
-                    <p>Otimizamos seus processos para reduzir custos, aumentar produtividade e manter a qualidade consistente.</p>
-                </div>
-                
-                <div class="value-point">
-                    <i class="fas fa-award"></i>
-                    <h3>Diferencial Competitivo</h3>
-                    <p>Diferencie-se no mercado com selos de qualidade e processos certificados que inspiram confiança.</p>
-                </div>
-                
-                <div class="value-point">
-                    <i class="fas fa-heart"></i>
-                    <h3>Proteção ao Consumidor</h3>
-                    <p>Garanta a segurança dos seus clientes e construa uma reputação sólida baseada na qualidade e transparência.</p>
-                </div>
-
-                <!-- Novas vantagens adicionadas -->
-                <div class="value-point">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Redução de Custos</h3>
-                    <p>Identificamos oportunidades de economia através da otimização de processos e redução de desperdícios.</p>
-                </div>
-                
-                <div class="value-point">
-                    <i class="fas fa-rocket"></i>
-                    <h3>Inovação Contínua</h3>
-                    <p>Implementamos as mais recentes tecnologias e metodologias para manter seu negócio na vanguarda do setor.</p>
-                </div>
+    <!-- Coming Soon Section -->
+    <section class="coming-soon" id="breve">
+        <h2>Em Breve: Clube Vitalis</h2>
+        <p>Exclusivo para Nossos Clientes - Pensando em oferecer valor além da consultoria, criamos o Clube Vitalis - um ecossistema completo de benefícios</p>
+        
+        <div class="club-benefits">
+            <div class="benefit-card">
+                <h3>Para seu Estabelecimento:</h3>
+                <ul>
+                    <li>Rede de fornecedores parceiros com descontos especiais</li>
+                    <li>Selos de qualidade Vitalis para destacar seu compromisso</li>
+                    <li>Plataforma de tendências com curadoria internacional</li>
+                    <li>Descontos em equipamentos e insumos</li>
+                </ul>
             </div>
             
-            <a href="https://wa.me/5511963431255?text=Olá! Gostaria de conhecer as vantagens de uma assessoria especializada para meu negócio." class="btn btn-primary" style="margin-top: 40px;" target="_blank">Quero essas Vantagens</a>
+            <div class="benefit-card">
+                <h3>Para sua Equipe:</h3>
+                <ul>
+                    <li>Programa de saúde do manipulador</li>
+                    <li>Palestras exclusivas</li>
+                    <li>Dias de bem-estar (massagens, quick massage)</li>
+                    <li>Treinamentos avançados</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -1036,9 +1126,8 @@
                 
                 <div class="social-links">
                     <a href="https://wa.me/5511963431255?text=Olá! Gostaria de mais informações sobre a Vitalis Assessoria." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/vitalisassessorias/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             
@@ -1074,8 +1163,9 @@
                             <option value="treinamento">Treinamento de Equipe</option>
                             <option value="adequacao">Adequação às Normas</option>
                             <option value="auditoria">Auditorias Periódicas</option>
-                            <option value="cozinhas">Consultoria para Cozinhas Industriais</option>
-                            <option value="analises">Análises Laboratoriais</option>
+                            <option value="plano-essencial">Plano Essencial</option>
+                            <option value="plano-plus">Plano Plus</option>
+                            <option value="plano-premium">Plano Premium</option>
                         </select>
                     </div>
                     
@@ -1098,9 +1188,8 @@
                 <p>Especialistas em consultoria e inspeções nutricionais para restaurantes, supermercados e cozinhas industriais.</p>
                 <div class="social-links">
                     <a href="https://wa.me/5511963431255?text=Olá! Gostaria de mais informações sobre a Vitalis Assessoria." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/vitalisassessorias/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
             
@@ -1109,21 +1198,19 @@
                 <ul>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#planos">Planos</a></li>
                     <li><a href="#expertise">Nossa Expertise</a></li>
-                    <li><a href="#valor">Vantagens</a></li>
+                    <li><a href="#breve">Em Breve</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h3>Serviços</h3>
+                <h3>Planos</h3>
                 <ul>
-                    <li><a href="#">Inspeções em Restaurantes</a></li>
-                    <li><a href="#">Consultoria para Supermercados</a></li>
-                    <li><a href="#">Elaboração de POPs e Manuais</a></li>
-                    <li><a href="#">Treinamento de Equipe</a></li>
-                    <li><a href="#">Adequação às Normas</a></li>
-                    <li><a href="#">Consultoria para Cozinhas Industriais</a></li>
+                    <li><a href="#planos">Plano Essencial</a></li>
+                    <li><a href="#planos">Plano Plus</a></li>
+                    <li><a href="#planos">Plano Premium</a></li>
                 </ul>
             </div>
             
@@ -1152,8 +1239,9 @@
                 mobileNav.innerHTML = `
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#planos">Planos</a></li>
                     <li><a href="#expertise">Nossa Expertise</a></li>
-                    <li><a href="#valor">Vantagens</a></li>
+                    <li><a href="#breve">Em Breve</a></li>
                     <li><a href="#contato">Contato</a></li>
                 `;
                 document.querySelector('header').appendChild(mobileNav);
